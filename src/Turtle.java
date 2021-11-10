@@ -19,6 +19,7 @@ public class Turtle {
 		final ImageIcon turtle5 = new ImageIcon("5_purple.png");
 		final ImageIcon turtle6 = new ImageIcon("6_gray.png");
 		final ImageIcon pacman = new ImageIcon("pacman.png");
+		final ImageIcon enemy = new ImageIcon("enemy.png");
 		final ImageIcon empty = new ImageIcon("empty.png");
 		final ImageIcon bigDot = new ImageIcon("bigDot.png");
 		final ImageIcon smallDot = new ImageIcon("smallDot.png");
@@ -64,26 +65,65 @@ public class Turtle {
 			
 			public void actionPerformed(ActionEvent event)
 			{
-				if(start<=0) where = 1+random.nextInt(2);
+				if(start<=0) where = 1+random.nextInt(4);
 				else { where = 1; start--; }
 					switch(where) {
 					case 1:
-						if(!(f[enemy1H][enemy1W+1].getIcon()).equals(wall) && !(f[enemy1H][enemy1W+1].getIcon()).equals(smallDot)) {
+						if(!(f[enemy1H][enemy1W+1].getIcon()).equals(wall) && !(f[enemy1H][enemy1W+1].getIcon()).equals(smallDot) && !(f[enemy1H][enemy1W+1].getIcon()).equals(pacman) && !(f[enemy1H][enemy1W+1].getIcon()).equals(enemy)) {
 							temp1=f[enemy1H][enemy1W+1].getIcon();
 							f[enemy1H][enemy1W+1].setIcon(turtle1);
 							f[enemy1H][enemy1W].setIcon(Itemp1);
 							Itemp1=temp1;
 							enemy1W++;
 						}
+						
 						else if(f[enemy1H][enemy1W+1].getIcon().equals(smallDot)) {
 							temp1=f[enemy1H][enemy1W-1].getIcon();
-							f[enemy1H][enemy1W+1].setIcon(turtle1);
+							f[enemy1H][enemy1W+1].setIcon(empty);
 							f[enemy1H][enemy1W].setIcon(Itemp1);
 							Itemp1=temp1;
-							enemy1W++;
+							enemy1H = 1;
+							enemy1W = 1;
+							f[enemy1H][enemy1W].setIcon(turtle1);
+						}
+						
+						else if(f[enemy1H][enemy1W+1].getIcon().equals(pacman)) {
+							temp1=f[enemy1H][enemy1W-1].getIcon();
+							f[enemy1H][enemy1W+1].setIcon(empty);
+							f[enemy1H][enemy1W].setIcon(Itemp1);
+							Itemp1=temp1;
+							enemy1W = enemy1W + 2;
+							f[enemy1H][enemy1W].setIcon(turtle1);
+						}
+						else if(f[enemy1H][enemy1W+1].getIcon().equals(enemy)) {
+							temp1=f[enemy1H][enemy1W-1].getIcon();
+							f[enemy1H][enemy1W+1].setIcon(empty);
+							f[enemy1H][enemy1W].setIcon(Itemp1);
+							Itemp1=temp1;
+							enemy1W--;
+							f[enemy1H][enemy1W].setIcon(turtle1);
+						}
+						break;
+					case 2:
+						if(!(f[enemy1H+1][enemy1W].getIcon()).equals(wall)) {
+							temp1=f[enemy1H+1][enemy1W].getIcon();
+							f[enemy1H+1][enemy1W].setIcon(turtle1);
+							f[enemy1H][enemy1W].setIcon(Itemp1);
+							Itemp1=temp1;
+							enemy1H++;
+						}
+						break;
+					case 3:
+						if(!(f[enemy1H-1][enemy1W].getIcon()).equals(wall)) {
+							temp1=f[enemy1H-1][enemy1W].getIcon();
+							f[enemy1H-1][enemy1W].setIcon(turtle1);
+							f[enemy1H][enemy1W].setIcon(Itemp1);
+							Itemp1=temp1;
+							enemy1H--;
 						}
 						break;
 					}
+					
 					/*
 					else if(enemyW==MAP_END) {
 						f[enemyH][enemyW].setIcon(enemy);
@@ -108,7 +148,7 @@ public class Turtle {
 				else { where = 1; start--; }
 					switch(where) {
 					case 1:
-						if(!(f[enemy2H][enemy2W+1].getIcon()).equals(wall) && !(f[enemy2H][enemy2W+1].getIcon()).equals(smallDot)) {
+						if(!(f[enemy2H][enemy2W+1].getIcon()).equals(wall) && !(f[enemy2H][enemy2W+1].getIcon()).equals(smallDot) && !(f[enemy2H][enemy2W+1].getIcon()).equals(pacman) && !(f[enemy2H][enemy2W+1].getIcon()).equals(enemy)) {
 							temp2=f[enemy2H][enemy2W+1].getIcon();
 							f[enemy2H][enemy2W+1].setIcon(turtle2);
 							f[enemy2H][enemy2W].setIcon(Itemp2);
@@ -117,10 +157,30 @@ public class Turtle {
 						}
 						else if(f[enemy2H][enemy2W+1].getIcon().equals(smallDot)) {
 							temp2=f[enemy2H][enemy2W-1].getIcon();
-							f[enemy2H][enemy2W+1].setIcon(turtle2);
+							f[enemy2H][enemy2W+1].setIcon(empty);
 							f[enemy2H][enemy2W].setIcon(Itemp2);
 							Itemp2=temp2;
-							enemy2W++;
+							enemy2H = 3;
+							enemy2W = 1;
+							f[enemy2H][enemy2W].setIcon(turtle2);
+						}
+						
+						else if(f[enemy2H][enemy2W+1].getIcon().equals(pacman)) {
+							temp2=f[enemy2H][enemy2W-1].getIcon();
+							f[enemy2H][enemy2W+1].setIcon(empty);
+							f[enemy2H][enemy2W].setIcon(Itemp2);
+							Itemp2=temp2;
+							enemy2W = enemy2W + 2;
+							f[enemy2H][enemy2W].setIcon(turtle2);
+						}
+						
+						else if(f[enemy2H][enemy2W+1].getIcon().equals(enemy)) {
+							temp2=f[enemy2H][enemy2W-1].getIcon();
+							f[enemy2H][enemy2W+1].setIcon(empty);
+							f[enemy2H][enemy2W].setIcon(Itemp2);
+							Itemp2=temp2;
+							enemy2W--;
+							f[enemy2H][enemy2W].setIcon(turtle2);
 						}
 						break;
 					}	
@@ -140,7 +200,7 @@ public class Turtle {
 				else { where = 1; start--; }
 					switch(where) {
 					case 1:
-						if(!(f[enemy3H][enemy3W+1].getIcon()).equals(wall) && !(f[enemy3H][enemy3W+1].getIcon()).equals(smallDot)) {
+						if(!(f[enemy3H][enemy3W+1].getIcon()).equals(wall) && !(f[enemy3H][enemy3W+1].getIcon()).equals(smallDot) && !(f[enemy3H][enemy3W+1].getIcon()).equals(pacman) && !(f[enemy3H][enemy3W+1].getIcon()).equals(enemy)) {
 							temp3=f[enemy3H][enemy3W+1].getIcon();
 							f[enemy3H][enemy3W+1].setIcon(turtle3);
 							f[enemy3H][enemy3W].setIcon(Itemp3);
@@ -149,10 +209,29 @@ public class Turtle {
 						}
 						else if(f[enemy3H][enemy3W+1].getIcon().equals(smallDot)) {
 							temp3=f[enemy3H][enemy3W-1].getIcon();
-							f[enemy3H][enemy3W+1].setIcon(turtle3);
+							f[enemy3H][enemy3W+1].setIcon(empty);
 							f[enemy3H][enemy3W].setIcon(Itemp3);
 							Itemp3=temp3;
-							enemy3W++;
+							enemy3H = 5;
+							enemy3W = 1;
+							f[enemy3H][enemy3W].setIcon(turtle3);
+						}
+						
+						else if(f[enemy3H][enemy3W+1].getIcon().equals(pacman)) {
+							temp3=f[enemy3H][enemy3W-1].getIcon();
+							f[enemy3H][enemy3W+1].setIcon(empty);
+							f[enemy3H][enemy3W].setIcon(Itemp3);
+							Itemp3=temp3;
+							enemy3W = enemy3W + 2;
+							f[enemy3H][enemy3W].setIcon(turtle3);
+						}
+						else if(f[enemy3H][enemy3W+1].getIcon().equals(enemy)) {
+							temp3=f[enemy3H][enemy3W-1].getIcon();
+							f[enemy3H][enemy3W+1].setIcon(empty);
+							f[enemy3H][enemy3W].setIcon(Itemp3);
+							Itemp3=temp3;
+							enemy3W--;
+							f[enemy3H][enemy3W].setIcon(turtle3);
 						}
 						break;
 					}	
@@ -172,7 +251,7 @@ public class Turtle {
 				else { where = 1; start--; }
 					switch(where) {
 					case 1:
-						if(!(f[enemy4H][enemy4W+1].getIcon()).equals(wall) && !(f[enemy4H][enemy4W+1].getIcon()).equals(smallDot)) {
+						if(!(f[enemy4H][enemy4W+1].getIcon()).equals(wall) && !(f[enemy4H][enemy4W+1].getIcon()).equals(smallDot) && !(f[enemy4H][enemy4W+1].getIcon()).equals(pacman) && !(f[enemy4H][enemy4W+1].getIcon()).equals(enemy)) {
 							temp4=f[enemy4H][enemy4W+1].getIcon();
 							f[enemy4H][enemy4W+1].setIcon(turtle4);
 							f[enemy4H][enemy4W].setIcon(Itemp4);
@@ -181,10 +260,29 @@ public class Turtle {
 						}
 						else if(f[enemy4H][enemy4W+1].getIcon().equals(smallDot)) {
 							temp4=f[enemy4H][enemy4W-1].getIcon();
-							f[enemy4H][enemy4W+1].setIcon(turtle4);
+							f[enemy4H][enemy4W+1].setIcon(empty);
 							f[enemy4H][enemy4W].setIcon(Itemp4);
 							Itemp4=temp4;
-							enemy4W++;
+							enemy4H = 7;
+							enemy4W = 1;
+							f[enemy4H][enemy4W].setIcon(turtle4);
+						}
+						
+						else if(f[enemy4H][enemy4W+1].getIcon().equals(pacman)) {
+							temp4=f[enemy4H][enemy4W-1].getIcon();
+							f[enemy4H][enemy4W+1].setIcon(empty);
+							f[enemy4H][enemy4W].setIcon(Itemp4);
+							Itemp4=temp4;
+							enemy4W = enemy4W + 2;
+							f[enemy4H][enemy4W].setIcon(turtle4);
+						}
+						else if(f[enemy4H][enemy4W+1].getIcon().equals(enemy)) {
+							temp4=f[enemy4H][enemy4W-1].getIcon();
+							f[enemy4H][enemy4W+1].setIcon(empty);
+							f[enemy4H][enemy4W].setIcon(Itemp4);
+							Itemp4=temp4;
+							enemy4W--;
+							f[enemy4H][enemy4W].setIcon(turtle4);
 						}
 						break;
 					}	
@@ -204,7 +302,7 @@ public class Turtle {
 				else { where = 1; start--; }
 					switch(where) {
 					case 1:
-						if(!(f[enemy5H][enemy5W+1].getIcon()).equals(wall) && !(f[enemy5H][enemy5W+1].getIcon()).equals(smallDot)) {
+						if(!(f[enemy5H][enemy5W+1].getIcon()).equals(wall) && !(f[enemy5H][enemy5W+1].getIcon()).equals(smallDot) && !(f[enemy5H][enemy5W+1].getIcon()).equals(pacman) && !(f[enemy5H][enemy5W+1].getIcon()).equals(enemy)) {
 							temp5=f[enemy5H][enemy5W+1].getIcon();
 							f[enemy5H][enemy5W+1].setIcon(turtle5);
 							f[enemy5H][enemy5W].setIcon(Itemp5);
@@ -213,10 +311,29 @@ public class Turtle {
 						}
 						else if(f[enemy5H][enemy5W+1].getIcon().equals(smallDot)) {
 							temp5=f[enemy5H][enemy5W-1].getIcon();
-							f[enemy5H][enemy5W+1].setIcon(turtle5);
+							f[enemy5H][enemy5W+1].setIcon(empty);
 							f[enemy5H][enemy5W].setIcon(Itemp5);
 							Itemp5=temp5;
-							enemy5W++;
+							enemy5H = 9;
+							enemy5W = 1;
+							f[enemy5H][enemy5W].setIcon(turtle5);
+						}
+						
+						else if(f[enemy5H][enemy5W+1].getIcon().equals(pacman)) {
+							temp5=f[enemy5H][enemy5W-1].getIcon();
+							f[enemy5H][enemy5W+1].setIcon(empty);
+							f[enemy5H][enemy5W].setIcon(Itemp5);
+							Itemp5=temp5;
+							enemy5W = enemy5W + 2;
+							f[enemy5H][enemy5W].setIcon(turtle5);
+						}
+						else if(f[enemy5H][enemy5W+1].getIcon().equals(enemy)) {
+							temp5=f[enemy5H][enemy5W-1].getIcon();
+							f[enemy5H][enemy5W+1].setIcon(empty);
+							f[enemy5H][enemy5W].setIcon(Itemp5);
+							Itemp5=temp5;
+							enemy5W--;
+							f[enemy5H][enemy5W].setIcon(turtle5);
 						}
 						break;
 					}	
@@ -236,7 +353,7 @@ public class Turtle {
 				else { where = 1; start--; }
 					switch(where) {
 					case 1:
-						if(!(f[enemy6H][enemy6W+1].getIcon()).equals(wall) && !(f[enemy6H][enemy6W+1].getIcon()).equals(smallDot)) {
+						if(!(f[enemy6H][enemy6W+1].getIcon()).equals(wall) && !(f[enemy6H][enemy6W+1].getIcon()).equals(smallDot) && !(f[enemy6H][enemy6W+1].getIcon()).equals(pacman) && !(f[enemy6H][enemy6W+1].getIcon()).equals(enemy)) {
 							temp6=f[enemy6H][enemy6W+1].getIcon();
 							f[enemy6H][enemy6W+1].setIcon(turtle6);
 							f[enemy6H][enemy6W].setIcon(Itemp6);
@@ -245,10 +362,29 @@ public class Turtle {
 						}
 						else if(f[enemy6H][enemy6W+1].getIcon().equals(smallDot)) {
 							temp6=f[enemy6H][enemy6W-1].getIcon();
-							f[enemy6H][enemy6W+1].setIcon(turtle6);
+							f[enemy6H][enemy6W+1].setIcon(empty);
 							f[enemy6H][enemy6W].setIcon(Itemp6);
 							Itemp6=temp6;
-							enemy6W++;
+							enemy6H = 11;
+							enemy6W = 1;
+							f[enemy6H][enemy6W].setIcon(turtle6);
+						}
+						
+						else if(f[enemy6H][enemy6W+1].getIcon().equals(pacman)) {
+							temp6=f[enemy6H][enemy6W-1].getIcon();
+							f[enemy6H][enemy6W+1].setIcon(empty);
+							f[enemy6H][enemy6W].setIcon(Itemp6);
+							Itemp6=temp6;
+							enemy6W = enemy6W + 2;
+							f[enemy6H][enemy6W].setIcon(turtle6);
+						}
+						else if(f[enemy6H][enemy6W+1].getIcon().equals(enemy)) {
+							temp6=f[enemy6H][enemy6W-1].getIcon();
+							f[enemy6H][enemy6W+1].setIcon(empty);
+							f[enemy6H][enemy6W].setIcon(Itemp6);
+							Itemp6=temp6;
+							enemy6W--;
+							f[enemy6H][enemy6W].setIcon(turtle6);
 						}
 						break;
 					}	
@@ -296,34 +432,47 @@ public class Turtle {
 				
 				//장애물을 생성하기 위한 가상 배열 설치
 				for (int i = 1; i < MAP_SIZE_HEIGHT - 1; i++) {
-					for (int j = 3; j < MAP_SIZE_WIDTH - 3; j++) {
+					for (int j = 3; j < MAP_SIZE_WIDTH - 4; j++) {
 							temp = (int)r.nextInt(100);
-							if (temp >= 0 && temp < 80) {
+							if (temp >= 0 && temp < 70) {
 								array [i][j] = 0;
 								//Map_s[i][j] = array[i][j];
 							}
 							
-							else if (temp >= 80 && temp < 90) {
+							else if (temp >= 70 && temp < 75) {
 								array [i][j] = 1;
 								//Map_s[i][j] = array[i][j];
 							}
 							
-							else if (temp >= 90 && temp <100) {
+							else if (temp >= 75 && temp < 85) {
 								array [i][j] = 2;
 								//Map_s[i][j] = array[i][j];
+							}
+							
+							else if (temp >= 85 && temp < 95) {
+								array [i][j] = 3;
+								//Map_s[i][j] = array[i][j];
+							}
+							
+							else if (temp >= 95 && temp < 100) {
+								array [i][j] = 4;
 							}
 					}
 				}
 			
 				//장애물 종류에 따른 다른 장애물 설치
 				for (int i = 1; i < MAP_SIZE_HEIGHT - 1; i++) {
-					for (int j = 3; j < MAP_SIZE_WIDTH - 3; j++) {
+					for (int j = 3; j < MAP_SIZE_WIDTH - 4; j++) {
 						if (array[i][j] == 0)
 							f[i][j].setIcon(empty);
 						else if (array[i][j] == 1)
 							f[i][j].setIcon(smallDot);
 						else if (array[i][j] == 2)
 							f[i][j].setIcon(pacman);
+						else if (array[i][j] == 3)
+							f[i][j].setIcon(enemy);
+						else if (array[i][j] == 4)
+							f[i][j].setIcon(wall);
 						
 						frame.add(panel);
 					}
