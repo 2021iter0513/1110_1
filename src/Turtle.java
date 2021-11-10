@@ -18,6 +18,7 @@ public class Turtle {
 		final ImageIcon turtle4 = new ImageIcon("4_blue.png");
 		final ImageIcon turtle5 = new ImageIcon("5_purple.png");
 		final ImageIcon turtle6 = new ImageIcon("6_gray.png");
+		final ImageIcon pacman = new ImageIcon("pacman.png");
 		final ImageIcon empty = new ImageIcon("empty.png");
 		final ImageIcon bigDot = new ImageIcon("bigDot.png");
 		final ImageIcon smallDot = new ImageIcon("smallDot.png");
@@ -67,8 +68,15 @@ public class Turtle {
 				else { where = 1; start--; }
 					switch(where) {
 					case 1:
-						if(!(f[enemy1H][enemy1W+1].getIcon()).equals(wall)) {
+						if(!(f[enemy1H][enemy1W+1].getIcon()).equals(wall) && !(f[enemy1H][enemy1W+1].getIcon()).equals(smallDot)) {
 							temp1=f[enemy1H][enemy1W+1].getIcon();
+							f[enemy1H][enemy1W+1].setIcon(turtle1);
+							f[enemy1H][enemy1W].setIcon(Itemp1);
+							Itemp1=temp1;
+							enemy1W++;
+						}
+						else if(f[enemy1H][enemy1W+1].getIcon().equals(smallDot)) {
+							temp1=f[enemy1H][enemy1W-1].getIcon();
 							f[enemy1H][enemy1W+1].setIcon(turtle1);
 							f[enemy1H][enemy1W].setIcon(Itemp1);
 							Itemp1=temp1;
@@ -77,12 +85,6 @@ public class Turtle {
 						break;
 					}
 					/*
-					if(enemyH==pacmanH && enemyW==pacmanW) {
-						f[enemyH][enemyW].setIcon(enemy);
-						//dialog.add(button);
-						//dialog.setVisible(true);
-					}
-					
 					else if(enemyW==MAP_END) {
 						f[enemyH][enemyW].setIcon(enemy);
 						dialog.add(button);
@@ -106,8 +108,15 @@ public class Turtle {
 				else { where = 1; start--; }
 					switch(where) {
 					case 1:
-						if(!(f[enemy2H][enemy2W+1].getIcon()).equals(wall)) {
+						if(!(f[enemy2H][enemy2W+1].getIcon()).equals(wall) && !(f[enemy2H][enemy2W+1].getIcon()).equals(smallDot)) {
 							temp2=f[enemy2H][enemy2W+1].getIcon();
+							f[enemy2H][enemy2W+1].setIcon(turtle2);
+							f[enemy2H][enemy2W].setIcon(Itemp2);
+							Itemp2=temp2;
+							enemy2W++;
+						}
+						else if(f[enemy2H][enemy2W+1].getIcon().equals(smallDot)) {
+							temp2=f[enemy2H][enemy2W-1].getIcon();
 							f[enemy2H][enemy2W+1].setIcon(turtle2);
 							f[enemy2H][enemy2W].setIcon(Itemp2);
 							Itemp2=temp2;
@@ -131,8 +140,15 @@ public class Turtle {
 				else { where = 1; start--; }
 					switch(where) {
 					case 1:
-						if(!(f[enemy3H][enemy3W+1].getIcon()).equals(wall)) {
+						if(!(f[enemy3H][enemy3W+1].getIcon()).equals(wall) && !(f[enemy3H][enemy3W+1].getIcon()).equals(smallDot)) {
 							temp3=f[enemy3H][enemy3W+1].getIcon();
+							f[enemy3H][enemy3W+1].setIcon(turtle3);
+							f[enemy3H][enemy3W].setIcon(Itemp3);
+							Itemp3=temp3;
+							enemy3W++;
+						}
+						else if(f[enemy3H][enemy3W+1].getIcon().equals(smallDot)) {
+							temp3=f[enemy3H][enemy3W-1].getIcon();
 							f[enemy3H][enemy3W+1].setIcon(turtle3);
 							f[enemy3H][enemy3W].setIcon(Itemp3);
 							Itemp3=temp3;
@@ -156,8 +172,15 @@ public class Turtle {
 				else { where = 1; start--; }
 					switch(where) {
 					case 1:
-						if(!(f[enemy4H][enemy4W+1].getIcon()).equals(wall)) {
+						if(!(f[enemy4H][enemy4W+1].getIcon()).equals(wall) && !(f[enemy4H][enemy4W+1].getIcon()).equals(smallDot)) {
 							temp4=f[enemy4H][enemy4W+1].getIcon();
+							f[enemy4H][enemy4W+1].setIcon(turtle4);
+							f[enemy4H][enemy4W].setIcon(Itemp4);
+							Itemp4=temp4;
+							enemy4W++;
+						}
+						else if(f[enemy4H][enemy4W+1].getIcon().equals(smallDot)) {
+							temp4=f[enemy4H][enemy4W-1].getIcon();
 							f[enemy4H][enemy4W+1].setIcon(turtle4);
 							f[enemy4H][enemy4W].setIcon(Itemp4);
 							Itemp4=temp4;
@@ -181,8 +204,15 @@ public class Turtle {
 				else { where = 1; start--; }
 					switch(where) {
 					case 1:
-						if(!(f[enemy5H][enemy5W+1].getIcon()).equals(wall)) {
+						if(!(f[enemy5H][enemy5W+1].getIcon()).equals(wall) && !(f[enemy5H][enemy5W+1].getIcon()).equals(smallDot)) {
 							temp5=f[enemy5H][enemy5W+1].getIcon();
+							f[enemy5H][enemy5W+1].setIcon(turtle5);
+							f[enemy5H][enemy5W].setIcon(Itemp5);
+							Itemp5=temp5;
+							enemy5W++;
+						}
+						else if(f[enemy5H][enemy5W+1].getIcon().equals(smallDot)) {
+							temp5=f[enemy5H][enemy5W-1].getIcon();
 							f[enemy5H][enemy5W+1].setIcon(turtle5);
 							f[enemy5H][enemy5W].setIcon(Itemp5);
 							Itemp5=temp5;
@@ -206,8 +236,15 @@ public class Turtle {
 				else { where = 1; start--; }
 					switch(where) {
 					case 1:
-						if(!(f[enemy6H][enemy6W+1].getIcon()).equals(wall)) {
+						if(!(f[enemy6H][enemy6W+1].getIcon()).equals(wall) && !(f[enemy6H][enemy6W+1].getIcon()).equals(smallDot)) {
 							temp6=f[enemy6H][enemy6W+1].getIcon();
+							f[enemy6H][enemy6W+1].setIcon(turtle6);
+							f[enemy6H][enemy6W].setIcon(Itemp6);
+							Itemp6=temp6;
+							enemy6W++;
+						}
+						else if(f[enemy6H][enemy6W+1].getIcon().equals(smallDot)) {
+							temp6=f[enemy6H][enemy6W-1].getIcon();
 							f[enemy6H][enemy6W+1].setIcon(turtle6);
 							f[enemy6H][enemy6W].setIcon(Itemp6);
 							Itemp6=temp6;
@@ -259,15 +296,20 @@ public class Turtle {
 				
 				//장애물을 생성하기 위한 가상 배열 설치
 				for (int i = 1; i < MAP_SIZE_HEIGHT - 1; i++) {
-					for (int j = 2; j < MAP_SIZE_WIDTH - 3; j++) {
+					for (int j = 3; j < MAP_SIZE_WIDTH - 3; j++) {
 							temp = (int)r.nextInt(100);
-							if (temp >= 0 && temp < 90) {
+							if (temp >= 0 && temp < 80) {
 								array [i][j] = 0;
 								//Map_s[i][j] = array[i][j];
 							}
 							
-							else if (temp >= 90 && temp <100) {
+							else if (temp >= 80 && temp < 90) {
 								array [i][j] = 1;
+								//Map_s[i][j] = array[i][j];
+							}
+							
+							else if (temp >= 90 && temp <100) {
+								array [i][j] = 2;
 								//Map_s[i][j] = array[i][j];
 							}
 					}
@@ -275,11 +317,13 @@ public class Turtle {
 			
 				//장애물 종류에 따른 다른 장애물 설치
 				for (int i = 1; i < MAP_SIZE_HEIGHT - 1; i++) {
-					for (int j = 2; j < MAP_SIZE_WIDTH - 3; j++) {
+					for (int j = 3; j < MAP_SIZE_WIDTH - 3; j++) {
 						if (array[i][j] == 0)
 							f[i][j].setIcon(empty);
 						else if (array[i][j] == 1)
 							f[i][j].setIcon(smallDot);
+						else if (array[i][j] == 2)
+							f[i][j].setIcon(pacman);
 						
 						frame.add(panel);
 					}
